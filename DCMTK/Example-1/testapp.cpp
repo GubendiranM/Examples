@@ -12,9 +12,11 @@ int main()
 	DcmFileFormat fileformat;
 
 OFCondition status = fileformat.loadFile("test.dcm");
+fileformat.print;
 if (status.good())
 {
    OFString patientsName;
+   
    if (fileformat.getDataset()->findAndGetOFString(DCM_PatientName, patientsName).good())
    {
       cout << "Patient's Name: " << patientsName << endl;

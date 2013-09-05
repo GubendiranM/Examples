@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 2.8.6)
+
+PROJECT(traverseDICOMTree)
+
+SET(DCMTK_DIR "C:\\DCMTK")
+
+# settings for Microsoft Visual C++ 9
+SET(CMAKE_C_FLAGS "/nologo /W3 /Gy /EHsc")
+SET(CMAKE_C_FLAGS_DEBUG "/MTd /Z7 /Od")
+SET(CMAKE_C_FLAGS_RELEASE "/MT /O2")
+SET(CMAKE_C_FLAGS_MINSIZEREL "/MT /O2")
+SET(CMAKE_C_FLAGS_RELWITHDEBINFO "/MTd /Z7 /Od")
+
+ADD_DEFINITIONS(-D_REENTRANT)
+
+INCLUDE_DIRECTORIES(${DCMTK_DIR}/include)
+LINK_DIRECTORIES(${DCMTK_DIR}/lib)
+
+
+ADD_EXECUTABLE(traverseDICOMTree traverseDICOMTree)
+
+TARGET_LINK_LIBRARIES(traverseDICOMTree wsock32 netapi32  ofstd dcmdata oflog)
